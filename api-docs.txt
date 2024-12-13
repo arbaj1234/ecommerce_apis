@@ -1,0 +1,27 @@
+USERS APIS:
+
+REGISTER USER APIS:
+POST  ==>> http://localhost:8080/api/v1/user/register
+
+{
+    "name": "sa",
+    "email": "sa@gmailcom",
+    "password": "5274764",
+    "address": "pune",
+    "country": "india",
+    "phone": "685796"
+}
+
+ CURL:
+ curl --location 'http://localhost:8080/api/v1/user/register' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzU4NjI4NmRmMmI3Y2I4ODgwNzc4ODEiLCJpYXQiOjE3MzQwMTkzOTEsImV4cCI6MTczNDYyNDE5MX0.BgPdXXUwp79zF33kwcKvrOy6oCqLtccMQZ92UrsmmtQ' \
+--data-raw '{
+    "name": "sa",
+    "email": "sa@gmailcom",
+    "password": "5274764",
+    "address": "pune",
+    "country": "india",
+    "phone": "685796"
+}
+'
