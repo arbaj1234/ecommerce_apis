@@ -8,6 +8,8 @@ import { v2 as cloudinary } from 'cloudinary';
 import testRoutes from './routes/testRoutes.js';
 import userRoutes from './routes/UserRouters.js';
 import ProductRouters from './routes/productRoutes.js';
+import categoryRouters from './routes/categoryRoutes.js';
+import orderRouters from './routes/orderRouters.js';
 
 dotenv.config()
 cloudinary.config({
@@ -34,6 +36,8 @@ app.use(cookieParser());
 app.use('/api/v1/', testRoutes)
 app.use('/api/v1/user', userRoutes)
 app.use("/api/v1/product", ProductRouters)
+app.use("/api/v1/createCategory",categoryRouters)
+app.use("/api/v1/order",orderRouters)
 
 
 

@@ -17,6 +17,11 @@ const productSchema=new mongoose.Schema({
         type:Number,
         required: [true,"product stock is required"],
     },
+    // quantity:{
+    //     type:Number,
+    //     required: [true,"product quantity required"],
+    // },
+    
     category:{
         type:mongoose.Schema.Types.ObjectId,
         ref:"category"
