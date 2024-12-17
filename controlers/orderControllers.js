@@ -41,3 +41,58 @@ export const createOrderController=async(req,res)=>{
         })
     }
 }
+
+// get all orders
+export const getmyordersController=async(req,res)=>{
+    try {
+        const orders=await orderModel.find({user:req.user._id})
+        // validaton
+        if(!orders){
+            return res.status(404).send({
+                success: false,
+                message:"no orders found",
+            });
+        }
+        res.status(200).send({
+            success: true,
+            message:"yours orders data",
+            totalOrder:orders.length,
+            orders,
+        });
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({
+            success: false,
+            message:'Error in my order api',
+            error,
+        })
+    }
+}
+
+// get singel orders 
+
+export const singleOrderDetrailsController=async(req,res)=>{
+try {
+    const order=await orderModel.findById(req.params.id)
+    // validaton
+    if(!order){
+        return res.status(404).send({
+            success: false,
+            message: 'Order not found',
+        });
+    }
+    res.status(200).send({
+        success: true,
+        message:'your order fetched',
+        order,
+    })
+} catch (error) {
+    console.log(error);
+    res.status(500).send({
+        success: false,
+        message:'Error in singel  order api',
+        error,
+    })
+}
+}
