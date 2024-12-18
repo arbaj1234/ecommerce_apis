@@ -33,7 +33,7 @@ const orderSchema = new mongoose.Schema({
                 type: String,
                 required: [true, 'product image is required']
             },
-            poduct: {
+            product: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'products',
                 required: true
@@ -57,15 +57,15 @@ const orderSchema = new mongoose.Schema({
     },
     itemPrice: {
         type: Number,
-        required: [true, 'item price is required']
+        required: [true, 'item price is required...................']
     },
     tax: {
         type: Number,
         required: [true, 'tax price is required']
     },
-    shippingCharger: {
+    shippingCharges: {
         type: Number,
-        required: [true, 'shippingCharger price is required']
+        required: [true, 'shippingChargers is required.................']
     },
     totalAmount: {
         type: Number,

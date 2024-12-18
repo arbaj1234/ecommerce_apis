@@ -1,5 +1,5 @@
 import express from 'express';  
-import { createOrderController, getmyordersController, singleOrderDetrailsController } from "../controlers/orderControllers.js";
+import { createOrderController, getmyordersController, paymentsController, singleOrderDetrailsController } from "../controlers/orderControllers.js";
 import {isAuth} from "./../middlewares/authMiddlewares.js";
 
 
@@ -15,5 +15,8 @@ router.get('/my-order',isAuth,getmyordersController);
 
 // GET singel ORDERS
 router.get('/my-order:id',isAuth,singleOrderDetrailsController);
+
+//  acceipt payment
+// router.post('/payments',isAuth,paymentsController);
 
 export default router;

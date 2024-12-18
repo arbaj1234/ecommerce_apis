@@ -1,24 +1,27 @@
+// import { strip } from "colors/index.js";
 import orderModel from "../models/orderModel.js";
 import productModel from "../models/productModel.js";
+// import stripe from "stripe";
 
 export const createOrderController=async(req,res)=>{
     try {
-        const{shippingInfo,orderItems,paymentMethod,paymentInfo,itmePrice,tax,shippingCharger,totalAmount}=req.body
+        const{shippingInfo,orderItems,paymentMethod,paymentInfo,itemPrice,tax,shippingCharges,totalAmount}=req.body
         // validation
         // if(!shippingInfo || !orderItems || !paymentMethod || !paymentInfo || itmePrice || !tax || !shippingCharger || !totalAmount)
         //     return res.status(400).send({
         //    success: false,
         //    message:'please provide all fields'
         //     })
+        console.log("req.body" , req.body)
             await orderModel.create({
                 user:req.user._id,
                 shippingInfo,
                 orderItems,
                 paymentMethod,
                 paymentInfo,
-                itmePrice,
+                itemPrice,
                 tax,
-                shippingCharger,
+                shippingCharges,
                 totalAmount,
 
             })
@@ -95,4 +98,34 @@ try {
         error,
     })
 }
+}
+
+// ACCEPT PAYMENTS
+export const paymentsController=async(req,res)=>{
+    try {
+        // get ampunt 
+        const {totalAmount}=req.body;
+        // validation 
+        if(!totalAmount){
+            return res.status(404).send({
+                success: false,
+                message:'Total amount is required',
+            });
+        }
+        const {client_secret}=await Stripe.paymentIntents.create({
+            amount:Number(totalAmount * 100),
+            currency:"usd",
+        });
+        res.status(200).send({
+            success: true,
+            client_secret,
+        })
+    } catch (error) {
+        console.log(error);
+    res.status(500).send({
+        success: false,
+        message:'Error in GET UPDATE product api',
+        error,
+    })
+    }
 }

@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import connectDb from './config/connectDb.js';
 import morgan from 'morgan';
 import cors from 'cors';
+// import Stripe from 'stripe';
 import cookieParser from 'cookie-parser';
 import { v2 as cloudinary } from 'cloudinary';
 import testRoutes from './routes/testRoutes.js';
@@ -21,7 +22,8 @@ cloudinary.config({
 const app = express();
 connectDb()
 
-
+// stripe configuration
+// const stripe=new Stripe(process.env.STRIPE_API_SECRET)
 
 
 // middlewar
