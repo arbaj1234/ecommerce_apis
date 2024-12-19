@@ -38,8 +38,8 @@ app.use(cookieParser());
 app.use('/api/v1/', testRoutes)
 app.use('/api/v1/user', userRoutes)
 app.use("/api/v1/product", ProductRouters)
-app.use("/api/v1/createCategory",categoryRouters)
-app.use("/api/v1/order",orderRouters)
+app.use("/api/v1/createCategory", categoryRouters)
+app.use("/api/v1/order", orderRouters)
 
 
 
