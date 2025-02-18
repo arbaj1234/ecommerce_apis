@@ -20,7 +20,7 @@ cloudinary.config({
 });
 
 const app = express();
-connectDb()
+connectDb();
 
 // stripe configuration
 // const stripe=new Stripe(process.env.STRIPE_API_SECRET)
@@ -40,7 +40,6 @@ app.use('/api/v1/user', userRoutes)
 app.use("/api/v1/product", ProductRouters)
 app.use("/api/v1/createCategory", categoryRouters)
 app.use("/api/v1/order", orderRouters)
-
 
 
 //port
